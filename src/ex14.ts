@@ -3,11 +3,15 @@
 // Return type: string.
 
 interface UserProfile {
-  
+  username: string;
+  email: string;
+  lastLogin?: Date;
 }
 
-function getLastLoginMessage(user) {
-  
+function getLastLoginMessage(user: UserProfile): string {
+  const result = user.lastLogin?.toLocaleString() ?? "No login recorded";
+  console.log(result)
+  return result
 }
 
 // Expected output:

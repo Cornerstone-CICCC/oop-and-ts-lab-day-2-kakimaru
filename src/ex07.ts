@@ -3,8 +3,16 @@
 // - Use a type guard to log different messages based on whether the longitude is provided.
 // - Return type: void.
 
-function logCoordinates(coords) {
-  
+type Coordinates = [number, number?]
+
+function logCoordinates(coords: Coordinates): void {
+  const [latitude, longitude] = coords;
+
+  if(longitude) {
+    console.log(`Latitude: ${latitude}, Longitude: ${longitude}`)
+  } else {
+    console.log(`Latitude: ${latitude}`)
+  }
 }
 
 // Expected output:

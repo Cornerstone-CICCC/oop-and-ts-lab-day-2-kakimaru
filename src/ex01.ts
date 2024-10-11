@@ -5,9 +5,24 @@
 // - The function should have overloads for both the string and number types.
 // - Return type: string for string inputs, number for number inputs.
 
+function transformInput(x: string): string;
+function transformInput(x: number): number;
 
-function transformInput(x) {
-
+function transformInput(x: any): any {
+  if(typeof x === 'string') {
+    const result = x.split('').reverse().join('')
+    console.log(result)
+    return result
+  } else if(typeof x === 'number') {
+    let result = 1
+    for(let i = x; i > 1; i--) {
+      result *= i
+    }
+    console.log(result)
+    return result
+  } else {
+    throw new Error(`Input valid context.`)
+  }
 }
 
 // Expected output:

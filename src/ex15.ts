@@ -7,8 +7,20 @@ interface Product {
   category: string;
 }
 
-function groupByCategory(products) {
-  
+function groupByCategory(products: Product[]): {[key: string]: Product[]} {
+  let result: {[key: string]: Product[]} = {}
+
+  for(let product of products) {
+     let category = product.category;
+
+     if (!result[category]) {
+       result[category] = [];
+     }
+ 
+     result[category].push(product);
+  }
+  console.log(result)
+  return result
 }
 
 // Expected output:

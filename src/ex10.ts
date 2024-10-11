@@ -12,8 +12,12 @@ interface Manager {
   team: string;
 }
 
-function promoteToManager(dev, team) {
-  
+type PromoteToManager = Developer & Manager
+
+function promoteToManager(dev: Developer, team: string): PromoteToManager {
+  const result = {...dev, team}
+  console.log(result)
+  return result
 }
 
 // Expected output:

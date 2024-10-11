@@ -5,15 +5,28 @@
 interface Employee {
   name: string;
   role: string;
-  salary: number;
+  salary?: number;
 }
 
 interface Company {
-
+  name: string;
+  address: string;
+  employees: Employee[];
 }
 
-function updateCompany(company, updates) {
-  
+function updateCompany(company: Company, updates: Partial<Company>): Company {
+  const updatedEmployees = company.employees.map((employee, index) => {
+    if (updates.employees && updates.employees[index]) {
+      return { ...employee, ...updates.employees[index]};
+    }
+    return employee;
+  });
+
+  return {
+    ...company,
+    ...updates,
+    employees: updatedEmployees
+  };
 }
 
 // Expected output:

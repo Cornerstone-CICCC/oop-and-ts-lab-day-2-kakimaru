@@ -11,7 +11,9 @@ interface Swimmable {
   swim(): void;
 }
 
-class Duck {
+interface Both extends Flyable, Swimmable{}
+
+class Duck implements Both{
   fly() {
       console.log("Duck is flying");
   }
@@ -20,8 +22,9 @@ class Duck {
   }
 }
 
-function getCapabilities(duck) {
-  
+function getCapabilities(duck: Both): void {
+  duck.fly()
+  duck.swim()
 }
 
 // Expected output:

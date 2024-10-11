@@ -8,8 +8,22 @@ interface User {
   active: boolean;
 }
 
-function generateSummary(users) {
+function generateSummary(users: User[]): { activeCount: number, averageAge: number }
+{
+  let count = 0;
+  let totalAge = 0
+  users.forEach(user => {
+    if(user.active === true) {
+      count++;
+      totalAge += user.age
+    }
+  })
 
+  const averageAge = count > 0 ? totalAge / count : 0;
+  const result = {activeCount: count, averageAge: averageAge}
+
+  console.log(result)
+  return result
 }
 
 // Expected output:
